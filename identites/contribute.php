@@ -52,7 +52,7 @@ if (isset($_FILES['file'])) {
 	
 	// Redirect user to uploaded parts 
 	$url = sprintf('index.php?part1=%s_part_1.png&part2=%s_part_2.png&part3=%s_part_3.png&created=%d', $imageName, $imageName, $imageName, $countIdentitiesCreated);
-	//header(sprintf('Location: %s', $url));
+	header(sprintf('Location: %s', $url));
 	
 	
 	} catch (Exception $e) {
