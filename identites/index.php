@@ -115,7 +115,7 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 		</div>
 		<p id="footer">
 			<a href="<?php echo $urlRoot ?>">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
-			Le code source est <a href="https://github.com/contructions-incongrues/musiques-incongrues.net/tree/master/forum/oeil/milliards/">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L'hébergeur dopé au Pastis">Pastis Hosting</a>.
+			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L'hébergeur dopé au Pastis">Pastis Hosting</a>.
 		</p>
 	</div>
 		<script type="text/javascript" src="http://www.google-analytics.com/urchin.js"></script>
