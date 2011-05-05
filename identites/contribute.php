@@ -25,6 +25,10 @@ if (isset($_FILES['file'])) {
     imagecopyresampled($imageTop, $image, 0, 0, 0, 0, 800, 200, 800, 200);
     imagecopyresampled($imageMiddle, $image, 0, 0, 0, 200, 800, 200, 800, 200);
     imagecopyresampled($imageBottom, $image, 0, 0, 0, 400, 800, 200, 800, 200);
+
+	// Count created identities 
+	// TODO : this should be obtained with an API call
+	$countIdentitiesPrev = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE__)))), 3);
 	
 	// Store files
 	move_uploaded_file($_FILES['file']['tmp_name'], sprintf('%s/full/%s.png', $store, $imageName));
@@ -32,6 +36,11 @@ if (isset($_FILES['file'])) {
 	imagepng($imageMiddle, sprintf('%s/parts/2/%s_part_2.png', $store, $imageName));
 	imagepng($imageBottom, sprintf('%s/parts/3/%s_part_3.png', $store, $imageName));
 	
+	// Count created identities 
+	// TODO : this should be obtained with an API call
+	$countIdentitiesNew = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE__)))), 3);
+	$countIdentitiesCreated = $countIdentitiesNew - $countIdentitiesPrev;
+
 	// Free resources
 	imagedestroy($image);
 	imagedestroy($imageTop);
@@ -42,9 +51,9 @@ if (isset($_FILES['file'])) {
 	$feedback = 'Image successfully uploaded and sliced. Thanks !';
 	
 	// Redirect user to uploaded parts 
-	$url = sprintf('index.php?part1=%s_part_1.png&part2=%s_part_2.png&part3=%s_part_3.png', $imageName, $imageName, $imageName);
+	$url = sprintf('index.php?part1=%s_part_1.png&part2=%s_part_2.png&part3=%s_part_3.png&created=%d', $imageName, $imageName, $imageName, $countIdentitiesCreated);
 	header(sprintf('Location: %s', $url));
-	exit(0);
+	
 	
 	} catch (Exception $e) {
 		$feedback = $e->getMessage();

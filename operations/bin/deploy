@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/rsync --delete-after --cvs-exclude --exclude-from=operations/etc/rsync.excludes --links -avz -e ssh . net_milliards@millemilliards.net:/srv/bouteille_data/plesk-vhosts/millemilliards.net/httpdocs/

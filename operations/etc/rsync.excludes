@@ -1,0 +1,7 @@
+identites/images/full/*.png
+identites/images/parts/*/*.png
+operations
+.buildpath
+.gitignore
+.project
+.settings/

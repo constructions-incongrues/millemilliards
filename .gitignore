@@ -1,0 +1,7 @@
+identites/images/full/*.png
+identites/images/parts/1/*.png
+identites/images/parts/2/*.png
+identites/images/parts/3/*.png
+.settings/
+.buildpath
+.project
