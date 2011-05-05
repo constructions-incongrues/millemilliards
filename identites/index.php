@@ -54,7 +54,7 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 				Un projet inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.
 			</p>
 			<p>
-				Le projet recense <?php echo $countIdentities ?> d'identités uniques à ce jour.
+				Le projet recense <?php echo number_format($countIdentities) ?> d'identités uniques à ce jour.
 			</p>
 
 			<p class="button">
