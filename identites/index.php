@@ -107,9 +107,9 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
-		<script src="js/behaviors.js?v=1"></script>
+		<script src="js/behaviors.js?v=2"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=1" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=2" />
 		<link href='http://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
@@ -131,8 +131,6 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	<img id="ln-top" src="images/static/cidrolin_top.png" />
 	<img id="ln-middle" src="images/static/cidrolin_middle.png" />
 	<img id="ln-bottom" src="images/static/cidrolin_bottom.png" />
-
-	<img src="images/static/loader.gif" style="display:none;" />
 
 	<div id="info">
 		<div  id="info-about">
