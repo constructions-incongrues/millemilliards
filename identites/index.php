@@ -22,9 +22,9 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 		
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
-		<script src="js/behaviors.js"></script>
+		<script src="js/behaviors.js?v=1"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=1" />
 		<link href='http://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
