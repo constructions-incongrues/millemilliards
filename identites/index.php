@@ -43,6 +43,10 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 
 	<body>
 
+	<img id="ln-top" src="images/static/cidrolin_top.png" />
+	<img id="ln-middle" src="images/static/cidrolin_middle.png" />
+	<img id="ln-bottom" src="images/static/cidrolin_bottom.png" />
+
 	<img src="images/static/loader.gif" style="display:none;" />
 
 	<div id="info">
@@ -57,13 +61,16 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 				Le projet recense <?php echo number_format($countIdentities) ?> d'identités uniques à ce jour.
 			</p>
 
+			<p style="text-align: center"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a><br />brasser</p>
+
 			<p class="button">
-				<a href="api.php" id="random" title="Générer une nouvelle identité">mixer</a>
-				&bull; <a href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" id="permalink" title="Accéder à l'URL vers l'identité courante">partager</a>
-				&bull; <a href="contribute.php" title="Soumettre de nouvelles identités">contribuer</a>
+				<a href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" id="permalink" title="Accéder à l'URL vers l'identité courante">partager</a>
 				&bull; <a href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" title="Télécharger l'image" id="download">télécharger</a>
+				&bull; <a href="contribute.php" title="Soumettre de nouvelles identités">contribuer</a>
 				<br /><input id="permalinkUrl" type="text" style="display:none" size="50" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" /> 
 			</p>
+			
+			<p class="button"><a id="close" href="#">fermer (cliquer sur l'identité pour réouvrir)</a></p>
 		</div>
 
 		<div id="bubble">
@@ -72,52 +79,23 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 	</div>
 
 	<div id="content">
-		<div>
-			<div class="scrollable" id="top">
-				<div class="items">
-					<div>
-<?php if ($images['top']): ?>
-						<img src="<?php echo sprintf('images/parts/1/%s', $images['top']) ?>" />
-<?php else: ?>
-						<img src="images/static/cidrolin_top.png" />
-<?php endif; ?>
-					</div>
-				</div>
-			</div>
+		<div id="top">
+			<img class="icare" src="images/static/layer-top.png" />
 		</div>
-		
-		<div>
-			<div class="scrollable" id="middle">
-				<div class=items>
-					<div>
-<?php if ($images['middle']): ?>
-						<img src="<?php echo sprintf('images/parts/2/%s', $images['middle']) ?>" />
-<?php else: ?>
-						<img src="images/static/cidrolin_middle.png" />
-<?php endif; ?>
-					</div>
-				</div>
-			</div>
+
+		<div id="middle">
+			<img class="icare" src="images/static/layer-middle.png" />
 		</div>
 			
-		<div>
-			<div class="scrollable" id="bottom">
-				<div class=items>
-					<div>
-<?php if ($images['bottom']): ?>
-						<img src="<?php echo sprintf('images/parts/3/%s', $images['bottom']) ?>" />
-<?php else: ?>
-						<img src="images/static/cidrolin_bottom.png" />
-<?php endif; ?>
-					</div>
-				</div>
-			</div>
+		<div id="bottom">
+			<img class="icare" src="images/static/layer-bottom.png" />
 		</div>
 		<p id="footer">
 			<a href="<?php echo $urlRoot ?>">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
 			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L'hébergeur dopé au Pastis">Pastis Hosting</a>.
 		</p>
 	</div>
+	
 		<script type="text/javascript" src="http://www.google-analytics.com/urchin.js"></script>
 		<script type="text/javascript"> 
             // <![CDATA[

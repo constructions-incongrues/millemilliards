@@ -5,7 +5,6 @@ background-color:#000;
 
 #content 
 {
-position:fixed !important;
 position:absolute;
 top:50%;
 left:50%;
@@ -20,6 +19,8 @@ background-color:#fff;
 {
 width:300px;
 float:right;
+text-align: justify;
+padding: 1em;
 
 }
 #info h1, #info h2
@@ -40,12 +41,15 @@ padding:5px;
 text-decoration:none;
 background-color:#000;
 border-radius:5px;
-
 }
 
 .button 
 {
-/*margin-left:60px;*/
+font-size: 0.8em;
+}
+#random {
+	font-size: 1.3em;
+	color: black;	
 }
 #info-about .button a 
 {
@@ -74,66 +78,10 @@ font-family: 'Expletus Sans', arial, serif;
 #bubble
 {
 float:right;
-margin-top:345px;
+margin-top:420px;
 margin-left:-140px;
 position: absolute; 
 z-index: 5;
-}
-
-.scrollable
-{
-	/* required settings */
-	position:relative;
-	overflow:hidden;
-	width: 800px;
-	height:200px;
-	z-index: 2;
-}
-
-/*
-	root element for scrollable items. Must be absolutely positioned
-	and it should have a extremely large width to accomodate scrollable items.
-	it's enough that you set the width and height for the root element and
-	not for this element.
-*/
-.scrollable .items {
-	width:20000em;
-	/* this cannot be too large */
-	position:absolute;
-	clear:both;
-}
-
-.items div {
-	float:left;
-	width:800px;
-}
-
-/* single scrollable item */
-.scrollable img {
-	float:left;
-	background-color:#fff;
-	width:800px;
-	height:200px;
-	
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-}
-
-#top.scrollable img {
-	-webkit-mask-box-image: url('../images/static/layer-top.png');
-}
-#middle.scrollable img {
-	-webkit-mask-box-image: url('../images/static/layer-middle.png');
-}
-#bottom.scrollable img {
-	-webkit-mask-box-image: url('../images/static/layer-bottom.png');
-}
-
-/* active item */
-.scrollable .active {
-	border:2px solid #000;
-	position:relative;
-	cursor:default;
 }
 
 #footer {
@@ -146,4 +94,21 @@ z-index: 5;
 
 #footer a {
 	color: #fff;
+}
+
+#top, #middle, #bottom {
+	width: 800px;
+	height: 200px;
+}
+
+#ln-top, #ln-middle, #ln-bottom {
+	display: none;
+}
+
+p.button {
+	text-align: center;
+}
+
+p.button a#close {
+	font-size: 0.7em;
 }

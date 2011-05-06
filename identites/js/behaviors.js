@@ -1,34 +1,44 @@
 $(document).ready(function() {
-	$('#top img').load(function() {
-		$('#top img').show('slide', {direction: 'left'});
-		if ($('#middle img').attr('complete') && $('#bottom img').attr('complete')) {
+	
+	// Initial identity. Say hello to Raymond !
+	$('#top').css('backgroundImage', 'url(images/static/cidrolin_top.png)');
+	$('#middle').css('backgroundImage', 'url(images/static/cidrolin_middle.png)');
+	$('#bottom').css('backgroundImage', 'url(images/static/cidrolin_bottom.png)');
+	
+	$('#ln-top').load(function() {
+		$('#top').css('backgroundImage', 'url(' + $(this).attr('src') + ')');
+		$('#top').show('slide', {direction: 'left'});
+		if ($('#ln-top').attr('complete') && $('#ln-top').attr('complete')) {
 			$('body').css('backgroundImage', '');
 		}
 	});
-	$('#middle img').load(function() {
-		$('#middle img').show('slide', {direction: 'right'});
-		if ($('#top img').attr('complete') && $('#bottom img').attr('complete')) {
+	$('#ln-middle').load(function() {
+		$('#middle').css('backgroundImage', 'url(' + $(this).attr('src') + ')');
+		$('#middle').show('slide', {direction: 'right'});
+		if ($('#ln-middle').attr('complete') && $('#ln-middle').attr('complete')) {
 			$('body').css('backgroundImage', '');
 		}
 	});
-	$('#bottom img').load(function() {
-		$('#bottom img').show('slide', {direction: 'left'});
-		if ($('#middle img').attr('complete') && $('#top img').attr('complete')) {
+	$('#ln-bottom').load(function() {
+		$('#bottom').css('backgroundImage', 'url(' + $(this).attr('src') + ')');
+		$('#bottom').show('slide', {direction: 'left'});
+		if ($('#ln-bottom').attr('complete') && $('#ln-bottom').attr('complete')) {
 			$('body').css('backgroundImage', '');
 		}
 	});
 	$('a#random').click(function(event) {
 		event.preventDefault();
+		$('#footer').hide();
 		$('body').css('backgroundImage', 'url(images/static/loader.gif)');
 		$('input#permalinkUrl').hide('fade');
-		$('#top img').hide('slide', {direction: 'right'});
-		$('#middle img').hide('slide', {direction: 'left'});
-		$('#bottom img').hide('slide', {direction: 'right'}, function() {
+		$('#top').hide('slide', {direction: 'right'});
+		$('#middle').hide('slide', {direction: 'left'});
+		$('#bottom').hide('slide', {direction: 'right'}, function() {
 			$.getJSON($('a#random').attr('href'), null, function(data, textStatus, jqXHR) {
 				// Reload identity parts
-				$('#top img').attr('src', 'images/parts/1/' + data.top);
-				$('#middle img').attr('src', 'images/parts/2/' + data.middle);
-				$('#bottom img').attr('src', 'images/parts/3/' + data.bottom);
+				$('#ln-top').attr('src', 'images/parts/1/' + data.top);
+				$('#ln-middle').attr('src', 'images/parts/2/' + data.middle);
+				$('#ln-bottom').attr('src', 'images/parts/3/' + data.bottom);
 
 				// Update permalink
 				$('a#permalink').attr('href', urlRoot + '/'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
@@ -45,12 +55,18 @@ $(document).ready(function() {
 		$('input#permalinkUrl').toggle('fade');
 	});
 
-	setTimeout("$('#info, #bubble').fadeOut('slow')", 10000);
 	$('#content').hover(function() {
-		$('#info, #bubble').fadeIn();
+		$('#footer').show('fade');
 	});
-
-	$('#info').mouseleave(function() {
-		$('#info, #bubble').fadeOut();
+	
+	$('#content').click(function() {
+		$('#info, #bubble').show('fade');
 	});
+	
+	$('#footer').hide();
+	
+	$('#info a#close').click(function(event) {
+		event.preventDefault();
+		$('#info, #bubble, #footer').hide('fade');
+	})
 });
