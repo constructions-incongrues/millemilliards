@@ -1,6 +1,7 @@
 body 
 {
 background-color:#000;
+font-family: 'Copse', arial, serif;
 }
 
 #content 
@@ -21,13 +22,12 @@ width:300px;
 float:right;
 text-align: justify;
 padding: 1em;
-
 }
+
 #info h1, #info h2
 {
 font-size:1.1em;
 color:#000;
-font-family: 'Copse', arial, serif;
 font-weight:normal;
 letter-spacing:0px;
 text-transform:lowercase;
@@ -64,15 +64,7 @@ border-radius:5px;
 
 #info-about
 {
-background-color:yellow;
-border-radius:10px;
-width:360px;
-padding:10px;
-margin-left:-120px;
-margin-top:90px;
-position: absolute; 
-z-index: 4;
-font-family: 'Expletus Sans', arial, serif; 
+	padding: 2em;
 }
 
 #bubble
@@ -112,3 +104,11 @@ p.button {
 p.button a#close {
 	font-size: 0.7em;
 }
+
+#more {
+	text-align: center;
+	margin: 0em;
+}
+
+#more a {
+	color: #fff;

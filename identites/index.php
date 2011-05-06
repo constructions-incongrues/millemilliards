@@ -76,7 +76,6 @@ sprintf('Le projet recense %s identités uniques à ce jour.', number_format($co
 		'mix'        => 'brasser',
 		'download'   => 'télécharger',
 		'contribute' => 'contribuer',
-		'close'      => "fermer (cliquer sur l'identité pour réouvrir)",
 		'footer'     => 
 sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
 			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
@@ -91,7 +90,6 @@ sprintf('This project gathers %d distinct identities.', number_format($countIden
 		'mix'        => 'remix',
 		'download'   => 'download',
 		'contribute' => 'contribute',
-		'close'      => "close (click on identity to reopen)",
 		'footer'     => 
 sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> and <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
 			Source code is <a href="https://github.com/contructions-incongrues/millemilliards">distributed</a> under a <a href="" title="">AGPL3</a> licence. Project is hosted by <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
@@ -107,6 +105,7 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
 		<script src="js/behaviors.js?v=2"></script>
 		
 		<link rel="stylesheet" type="text/css" href="css/main.css?v=2" />
@@ -127,32 +126,31 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	</head>
 
 	<body>
-
+	<p style="display:none;"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a><br /><?php echo $strings[$locale]['mix'] ?></p>
+	
+	<p id="more">
+		<a id="about" href="#flip">À propos</a>
+		<a id="about-back" href="#back" style="display:none;">Retour</a>
+	</p>
 	<img id="ln-top" src="images/static/cidrolin_top.png" />
 	<img id="ln-middle" src="images/static/cidrolin_middle.png" />
 	<img id="ln-bottom" src="images/static/cidrolin_bottom.png" />
 
-	<div id="info">
+	<div id="info" style="display:none;">
 		<div  id="info-about">
 			<?php echo $strings[$locale]['info-1']?>
 			<p>
 				<?php echo $strings[$locale]['info-2'] ?>
 			</p>
 
-			<p style="text-align: center"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a><br /><?php echo $strings[$locale]['mix'] ?></p>
-
-			<p class="button">
-				<a href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" id="permalink" title="Accéder à l'URL vers l'identité courante"><?php echo $strings[$locale]['share'] ?></a>
-				&bull; <a href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" title="Télécharger l'image" id="download"><?php echo $strings[$locale]['download'] ?></a>
-				&bull; <a href="contribute.php" title="Soumettre de nouvelles identités"><?php echo $strings[$locale]['contribute'] ?></a>
-				<br /><input id="permalinkUrl" type="text" style="display:none" size="50" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" /> 
-			</p>
-			
-			<p class="button"><a id="close" href="#"><?php echo $strings[$locale]['close'] ?></a></p>
-		</div>
-
-		<div id="bubble">
-			<img src="images/static/bubble.gif" />
+			<p><?php echo $strings[$locale]['footer'] ?></p>
+	
+			<ul>
+				<li><a href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" id="permalink" title="Accéder à l'URL vers l'identité courante"><?php echo $strings[$locale]['share'] ?></a></li>
+				<li><a href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" title="Télécharger l'image" id="download"><?php echo $strings[$locale]['download'] ?></a></li>
+				<li><a href="contribute.php" title="Soumettre de nouvelles identités"><?php echo $strings[$locale]['contribute'] ?></a></li>
+			</ul>
+			<input id="permalinkUrl" type="text" style="display:none" size="110" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" />
 		</div>
 	</div>
 
@@ -168,9 +166,6 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<div id="bottom">
 			<img class="icare" src="images/static/layer-bottom.png" />
 		</div>
-		<p id="footer">
-			<?php echo $strings[$locale]['footer'] ?>
-		</p>
 	</div>
 	
 		<script type="text/javascript" src="http://www.google-analytics.com/urchin.js"></script>

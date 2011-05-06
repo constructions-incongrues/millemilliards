@@ -28,7 +28,6 @@ $(document).ready(function() {
 	});
 	$('a#random').click(function(event) {
 		event.preventDefault();
-		$('#footer').hide();
 		$('body').css('backgroundImage', 'url(images/static/loader-pattern.gif)');
 		$('body').css('backgroundRepeat', 'repeat');
 		$('input#permalinkUrl').hide('fade');
@@ -42,7 +41,7 @@ $(document).ready(function() {
 				$('#ln-bottom').attr('src', 'images/parts/3/' + data.bottom);
 
 				// Update permalink
-				$('a#permalink').attr('href', urlRoot + '/'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
+				$('a#permalink').attr('href', urlRoot + '/'+'?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
 				$('input#permalinkUrl').val(urlRoot + '/' + '?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
 
 				// Update download link
@@ -51,23 +50,35 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('a#permalink').click(function(event) {
+	$('a#permalink').live('click', function(event) {
 		event.preventDefault();
+		$('input#permalinkUrl').val($(this).attr('href'));
 		$('input#permalinkUrl').toggle('fade');
 	});
 
 	$('#content').hover(function() {
-		$('#footer').show('fade');
+		$('#top, #middle, #bottom').css('opacity', '0.9');
+		$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
+	}, function() {
+		$('#top, #middle, #bottom').css('opacity', '1');
+		$('#middle').css('backgroundImage', 'url('+$('#ln-middle').attr('src')+')');
 	});
 	
 	$('#content').click(function() {
-		$('#info, #bubble').show('fade');
+		$('#random').click();
 	});
 	
-	$('#footer').hide();
-	
-	$('#info a#close').click(function(event) {
+	$('#about').click(function(event) {
 		event.preventDefault();
-		$('#info, #bubble, #footer').hide('fade');
-	})
+		$('#content').flip({direction: 'rl', content: $('#info').html()});
+		$(this).hide();
+		$('#about-back').show();
+	});
+	
+	$('#about-back').live('click', function(event) {
+		event.preventDefault();
+		$(this).hide();
+		$('#about').show();
+		$('#content').revertFlip();
+	});
 });
