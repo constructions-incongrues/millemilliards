@@ -29,7 +29,8 @@ $(document).ready(function() {
 	$('a#random').click(function(event) {
 		event.preventDefault();
 		$('#footer').hide();
-		$('body').css('backgroundImage', 'url(images/static/loader.gif)');
+		$('body').css('backgroundImage', 'url(images/static/loader-pattern.gif)');
+		$('body').css('backgroundRepeat', 'repeat');
 		$('input#permalinkUrl').hide('fade');
 		$('#top').hide('slide', {direction: 'right'});
 		$('#middle').hide('slide', {direction: 'left'});
