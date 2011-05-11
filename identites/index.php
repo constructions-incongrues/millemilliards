@@ -106,9 +106,9 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
-		<script src="js/behaviors.js?v=5"></script>
+		<script src="js/behaviors.js?v=6"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=5" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=6" />
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
@@ -126,6 +126,12 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	</head>
 
 	<body>
+	
+	<!-- Placeholders -->
+	<img id="ln-top" />
+	<img id="ln-middle" />
+	<img id="ln-bottom" />
+	
 	<p style="display:none;"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a></p>
 	
 	<div id="info" style="display:none;">
