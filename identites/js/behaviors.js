@@ -1,10 +1,5 @@
 $(document).ready(function() {
 	
-	// Initial identity. Say hello to Raymond !
-	$('#top').css('backgroundImage', 'url(images/static/cidrolin_top.png)');
-	$('#middle').css('backgroundImage', 'url(images/static/cidrolin_middle.png)');
-	$('#bottom').css('backgroundImage', 'url(images/static/cidrolin_bottom.png)');
-	
 	$('#ln-top').load(function() {
 		$('#top').css('backgroundImage', 'url(' + $(this).attr('src') + ')');
 		$('#top').show('slide', {direction: 'left'});
@@ -30,7 +25,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('body').css('backgroundImage', 'url(images/static/loader-pattern.gif)');
 		$('body').css('backgroundRepeat', 'repeat');
-		$('input#permalinkUrl').hide('fade');
+		$('input#permalinkUrl').hide();
 		$('#top').hide('slide', {direction: 'right'});
 		$('#middle').hide('slide', {direction: 'left'});
 		$('#bottom').hide('slide', {direction: 'right'}, function() {
@@ -41,26 +36,24 @@ $(document).ready(function() {
 				$('#ln-bottom').attr('src', 'images/parts/3/' + data.bottom);
 
 				// Update permalink
-				$('a#permalink').attr('href', urlRoot + '/'+'?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
-				$('input#permalinkUrl').val(urlRoot + '/' + '?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
+				$('a.share').attr('href', urlRoot + '/'+'?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
+				$('input#permalinkUrl').val($('a.share').attr('href'));
 
 				// Update download link
-				$('a#download').attr('href', 'download.php'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
+				$('a.download').attr('href', 'download.php'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
 			});
 		});
 	});
 	
-	$('a#permalink').live('click', function(event) {
+	$('a.share').live('click', function(event) {
 		event.preventDefault();
 		$('input#permalinkUrl').val($(this).attr('href'));
 		$('input#permalinkUrl').toggle('fade');
 	});
 
 	$('#content').hover(function() {
-		$('#top, #middle, #bottom').css('opacity', '0.9');
 		$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
 	}, function() {
-		$('#top, #middle, #bottom').css('opacity', '1');
 		$('#middle').css('backgroundImage', 'url('+$('#ln-middle').attr('src')+')');
 	});
 	
@@ -68,17 +61,27 @@ $(document).ready(function() {
 		$('#random').click();
 	});
 	
-	$('#about').click(function(event) {
+	$('#menu a.about').click(function(event) {
 		event.preventDefault();
-		$('#content').flip({direction: 'rl', content: $('#info').html()});
-		$(this).hide();
-		$('#about-back').show();
+		$('#content').flip({direction: 'rl', color:'#fff', content: $('#info').html()});
+		$(this).parent('li').hide();
+		$(this).parent('li').siblings().hide('fade');
+		$('#menu a.about-back').parent('li').show();
 	});
 	
-	$('#about-back').live('click', function(event) {
+	$('#menu a.about-back').live('click', function(event) {
 		event.preventDefault();
-		$(this).hide();
-		$('#about').show();
+		$(this).parent('li').siblings().show('fade');
+		$('#menu a.about').parent('li').show();
+		$(this).parent('li').hide();
 		$('#content').revertFlip();
 	});
+	
+	$('#container').hover(
+		function() {
+			$('#container ul#menu').show('fade');
+		}, function() {
+			$('#container ul#menu').hide('fade');
+		}
+	);
 });

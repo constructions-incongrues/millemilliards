@@ -53,9 +53,9 @@ function getUserLanguage($acceptLanguage) {
 }
 
 $images = array(
-	'top'    => filter_input(INPUT_GET, 'part1'),
-	'middle' => filter_input(INPUT_GET, 'part2'),
-	'bottom' => filter_input(INPUT_GET, 'part3')
+	'part1'    => filter_input(INPUT_GET, 'part1'),
+	'part2' => filter_input(INPUT_GET, 'part2'),
+	'part3' => filter_input(INPUT_GET, 'part3')
 );
 
 // Configure
@@ -73,9 +73,9 @@ $strings = array(
 		'info-2'     => 
 sprintf('Le projet recense %s identités uniques à ce jour.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'partager',
-		'mix'        => 'brasser',
 		'download'   => 'télécharger',
 		'contribute' => 'contribuer',
+		'about'      => 'à propos',
 		'footer'     => 
 sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
 			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
@@ -87,9 +87,9 @@ sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointemen
 		'info-2'     => 
 sprintf('This project gathers %d distinct identities.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'share',
-		'mix'        => 'remix',
 		'download'   => 'download',
 		'contribute' => 'contribute',
+		'about'      => 'about',
 		'footer'     => 
 sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> and <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
 			Source code is <a href="https://github.com/contructions-incongrues/millemilliards">distributed</a> under a <a href="" title="">AGPL3</a> licence. Project is hosted by <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
@@ -106,15 +106,16 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
-		<script src="js/behaviors.js?v=2"></script>
+		<script src="js/behaviors.js?v=5"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=2" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=5" />
 		<link href='http://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
 		<!-- Opengraph -->
-<?php if ($images['top'] && $images['middle'] && $images['bottom']): ?>
-		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" />
+<?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
+		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
 <?php endif;  ?>
 		
 		<script type="text/javascript">
@@ -126,45 +127,65 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	</head>
 
 	<body>
-	<p style="display:none;"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a><br /><?php echo $strings[$locale]['mix'] ?></p>
+	<p style="display:none;"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a></p>
 	
-	<p id="more">
-		<a id="about" href="#flip">À propos</a>
-		<a id="about-back" href="#back" style="display:none;">Retour</a>
-	</p>
+	<!-- Preloading -->
 	<img id="ln-top" src="images/static/cidrolin_top.png" />
 	<img id="ln-middle" src="images/static/cidrolin_middle.png" />
 	<img id="ln-bottom" src="images/static/cidrolin_bottom.png" />
 
 	<div id="info" style="display:none;">
-		<div  id="info-about">
+		<div id="info-about">
 			<?php echo $strings[$locale]['info-1']?>
-			<p>
-				<?php echo $strings[$locale]['info-2'] ?>
-			</p>
-
+			<p><?php echo $strings[$locale]['info-2'] ?></p>
 			<p><?php echo $strings[$locale]['footer'] ?></p>
-	
-			<ul>
-				<li><a href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" id="permalink" title="Accéder à l'URL vers l'identité courante"><?php echo $strings[$locale]['share'] ?></a></li>
-				<li><a href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" title="Télécharger l'image" id="download"><?php echo $strings[$locale]['download'] ?></a></li>
-				<li><a href="contribute.php" title="Soumettre de nouvelles identités"><?php echo $strings[$locale]['contribute'] ?></a></li>
-			</ul>
-			<input id="permalinkUrl" type="text" style="display:none" size="110" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['top'], $images['middle'], $images['bottom']) ?>" />
 		</div>
 	</div>
 
-	<div id="content">
-		<div id="top">
-			<img class="icare" src="images/static/layer-top.png" />
-		</div>
+	<div id="container">
+		<ul id="menu">
+			<li><a class="about" href="" title="<?php echo $strings[$locale]['about'] ?>"><?php echo $strings[$locale]['about'] ?></a></li>
+			<li style="display:none;"><a class="about-back" href="index.php">Retour</a></li>
+			<li><a class="share" href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['share'] ?>"><?php echo $strings[$locale]['share'] ?></a></li>
+			<li><a class="download" href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['download'] ?>"><?php echo $strings[$locale]['download'] ?></a></li>
+			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
+		</ul>
+		
+		<input class="share" id="permalinkUrl" type="text" style="display:none" size="110" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
+		
+		<div id="content">
+<?php if($images['part1']): ?>
+			<div id="top" style="background-image:url(<?php echo sprintf('images/parts/1/%s', $images['part1']) ?>);">
+				<img class="icare" src="images/static/layer-top.png" />
+			</div>
+<?php else: ?>
+			<div id="top" style="background-image:url(images/static/cidrolin_top.png);">
+				<img class="icare" src="images/static/layer-top.png" />
+			</div>
+<?php endif; ?>
 
-		<div id="middle">
-			<img class="icare" src="images/static/layer-middle.png" />
-		</div>
-			
-		<div id="bottom">
-			<img class="icare" src="images/static/layer-bottom.png" />
+	
+<?php if($images['part2']): ?>
+			<div id="middle" style="background-image:url(<?php echo sprintf('images/parts/2/%s', $images['part2']) ?>);">
+				<img class="icare" src="images/static/layer-middle.png" />
+			</div>
+<?php else: ?>
+			<div id="middle" style="background-image:url(images/static/cidrolin_middle.png);">
+				<img class="icare" src="images/static/layer-middle.png" />
+			</div>
+<?php endif; ?>
+
+				
+<?php if($images['part3']): ?>
+			<div id="bottom" style="background-image:url(<?php echo sprintf('images/parts/3/%s', $images['part3']) ?>);">
+				<img class="icare" src="images/static/layer-bottom.png" />
+			</div>
+<?php else: ?>
+			<div id="bottom" style="background-image:url(images/static/cidrolin_bottom.png);">
+				<img class="icare" src="images/static/layer-bottom.png" />
+			</div>
+<?php endif; ?>
+
 		</div>
 	</div>
 	
