@@ -1,8 +1,4 @@
-body 
-{
-background-color:#000;
-font-family: 'Expletus', arial, serif;
-}
+body {background-color:#000; font-family:'Didact Gothic', arial, serif;}
 
 #container, #content {
 margin: auto;

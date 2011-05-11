@@ -109,7 +109,6 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script src="js/behaviors.js?v=5"></script>
 		
 		<link rel="stylesheet" type="text/css" href="css/main.css?v=5" />
-		<link href='http://fonts.googleapis.com/css?family=Expletus+Sans' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
@@ -129,11 +128,6 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	<body>
 	<p style="display:none;"><a href="api.php" id="random" title="Générer une nouvelle identité">♻</a></p>
 	
-	<!-- Preloading -->
-	<img id="ln-top" src="images/static/cidrolin_top.png" />
-	<img id="ln-middle" src="images/static/cidrolin_middle.png" />
-	<img id="ln-bottom" src="images/static/cidrolin_bottom.png" />
-
 	<div id="info" style="display:none;">
 		<div id="info-about">
 			<?php echo $strings[$locale]['info-1']?>
