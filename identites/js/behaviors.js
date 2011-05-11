@@ -25,7 +25,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$('body').css('backgroundImage', 'url(images/static/loader-pattern.gif)');
 		$('body').css('backgroundRepeat', 'repeat');
-		$('input#permalinkUrl').hide();
+		$('#sharebox').hide('fade');
 		$('#top').hide('slide', {direction: 'right'});
 		$('#middle').hide('slide', {direction: 'left'});
 		$('#bottom').hide('slide', {direction: 'right'}, function() {
@@ -37,7 +37,6 @@ $(document).ready(function() {
 
 				// Update permalink
 				$('a.share').attr('href', urlRoot + '/'+'?part1=' + data.top + '&part2=' + data.middle + '&part3=' + data.bottom);
-				$('input#permalinkUrl').val($('a.share').attr('href'));
 
 				// Update download link
 				$('a.download').attr('href', 'download.php'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
@@ -47,9 +46,26 @@ $(document).ready(function() {
 	
 	$('a.share').live('click', function(event) {
 		event.preventDefault();
-		$('input#permalinkUrl').val($(this).attr('href'));
-		$('input#permalinkUrl').toggle('fade');
+		var urlShare = $(this).attr('href');
+		// Shorten URL using bit.ly
+		var urlBitly = 'http://api.bit.ly/v3/shorten/?login=millemilliards&apiKey=R_e32285dd4c3f112da1790f771fbc1b2f&longUrl=' + encodeURIComponent(urlShare);
+		$.get(urlBitly, function(data, textStatus, jqXHR) {
+			if (data.status_code == 200) {
+				console.log(data);
+				$('#sharebox p').html(data.data.url);
+				$('#sharebox').show('fade');
+			} else {
+				$('#sharebox p').html(urlShare);
+				$('#sharebox').show('fade');
+			}
+		});
 	});
+	
+	$('#sharebox a.close').click(function(event) {
+		event.preventDefault();
+		$('#sharebox').hide('fade');
+	});
+	
 
 	$('#content').hover(function() {
 		$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');

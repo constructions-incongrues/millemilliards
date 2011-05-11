@@ -53,7 +53,7 @@ function getUserLanguage($acceptLanguage) {
 }
 
 $images = array(
-	'part1'    => filter_input(INPUT_GET, 'part1'),
+	'part1' => filter_input(INPUT_GET, 'part1'),
 	'part2' => filter_input(INPUT_GET, 'part2'),
 	'part3' => filter_input(INPUT_GET, 'part3')
 );
@@ -106,9 +106,9 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
-		<script src="js/behaviors.js?v=6"></script>
+		<script src="js/behaviors.js?v=8"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=6" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=8" />
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
@@ -142,7 +142,13 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		</div>
 	</div>
 
+	<div id="sharebox" style="display:none;">
+	<p>&nbsp;</p>
+	<a href="#" class="close">close</a>
+	</div>
+
 	<div id="container">
+		
 		<ul id="menu">
 			<li><a class="about" href="" title="<?php echo $strings[$locale]['about'] ?>"><?php echo $strings[$locale]['about'] ?></a></li>
 			<li style="display:none;"><a class="about-back" href="index.php">Retour</a></li>
@@ -150,8 +156,6 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 			<li><a class="download" href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['download'] ?>"><?php echo $strings[$locale]['download'] ?></a></li>
 			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
 		</ul>
-		
-		<input class="share" id="permalinkUrl" type="text" style="display:none" size="110" value="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
 		
 		<div id="content">
 <?php if($images['part1']): ?>

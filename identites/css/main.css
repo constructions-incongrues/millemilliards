@@ -14,7 +14,8 @@ ul#menu li {background-color:#fff; display:inline; padding-left:1em; padding-rig
 ul#menu li a {color:#000; text-decoration:none; font-family:'Didact Gothic', arial, serif; font-size:0.9em;}
 ul#menu li a:hover {text-decoration:underline;}
 
-input.share {border:solid 1px black;}
+div#sharebox {background-color:#fff; border:solid 1px #000; width:90%; font-size: 0.7em; padding:0.3em; margin:auto; text-align:center;}
+div#sharebox p {font-size:3em;}
 
 #info 
 {
