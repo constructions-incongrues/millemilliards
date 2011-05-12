@@ -67,10 +67,14 @@ $(document).ready(function() {
 	});
 	
 
-	$('#content').hover(function() {
+	$('#content').one('mouseenter', function() {
 		$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
-	}, function() {
+	});
+	$('#content').mouseleave(function() {
 		$('#middle').css('backgroundImage', 'url('+$('#ln-middle').attr('src')+')');
+		$('#content').one('mouseenter', function() {
+			$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
+		});
 	});
 	
 	$('#content').click(function() {

@@ -106,9 +106,9 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
-		<script src="js/behaviors.js?v=8"></script>
+		<script src="js/behaviors.js?v=9"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=8" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=9" />
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
