@@ -1,4 +1,6 @@
 <?php
+$assetsVersion = 10;
+
 // Client language detection
 // TODO : could be better !
 $languages = getUserLanguage($_SERVER['HTTP_ACCEPT_LANGUAGE']);
@@ -106,15 +108,17 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flip.min.js"></script>
-		<script src="js/behaviors.js?v=9"></script>
+		<script src="js/behaviors.js?v=<?php echo $assetsVersion ?>"></script>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css?v=9" />
+		<link rel="stylesheet" type="text/css" href="css/main.css?v=<?php echo $assetsVersion ?>" />
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
 	
 		<!-- Opengraph -->
 <?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
 		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
+<?php else: ?>
+		<meta property="og:image" content="<?php echo sprintf('%s/images/static/anonymous.png', $urlRoot) ?>" />
 <?php endif;  ?>
 		
 		<script type="text/javascript">
@@ -157,31 +161,31 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
 		</ul>
 		
-		<div id="content">
+		<div id="content" class="identity">
 <?php if($images['part1']): ?>
-			<div id="top" style="background-image:url(<?php echo sprintf('images/parts/1/%s', $images['part1']) ?>);">
+			<div id="top" class="part" style="background-image:url(<?php echo sprintf('images/parts/1/%s', $images['part1']) ?>);">
 				<img class="icare" src="images/static/layer-top.png" />
 			</div>
 <?php else: ?>
-			<div id="top" style="background-image:url(images/static/cidrolin_top.png);">
+			<div id="top" class="part" style="background-image:url(images/static/cidrolin_top.png);">
 				<img class="icare" src="images/static/layer-top.png" />
 			</div>
 <?php endif; ?>
 
 	
 <?php if($images['part2']): ?>
-			<div id="middle" style="background-image:url(<?php echo sprintf('images/parts/2/%s', $images['part2']) ?>);">
+			<div id="middle" class="part" style="background-image:url(<?php echo sprintf('images/parts/2/%s', $images['part2']) ?>);">
 				<img class="icare" src="images/static/layer-middle.png" />
 			</div>
 <?php else: ?>
-			<div id="middle" style="background-image:url(images/static/cidrolin_middle.png);">
+			<div id="middle" class="part" style="background-image:url(images/static/cidrolin_middle.png);">
 				<img class="icare" src="images/static/layer-middle.png" />
 			</div>
 <?php endif; ?>
 
 				
 <?php if($images['part3']): ?>
-			<div id="bottom" style="background-image:url(<?php echo sprintf('images/parts/3/%s', $images['part3']) ?>);">
+			<div id="bottom" class="part" style="background-image:url(<?php echo sprintf('images/parts/3/%s', $images['part3']) ?>);">
 				<img class="icare" src="images/static/layer-bottom.png" />
 			</div>
 <?php else: ?>

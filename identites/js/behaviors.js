@@ -99,9 +99,9 @@ $(document).ready(function() {
 	
 	$('#container').hover(
 		function() {
-			$('#container ul#menu').show('fade');
+			$('#container ul#menu').animate({opacity: 1});
 		}, function() {
-			$('#container ul#menu').hide('fade');
+			$('#container ul#menu').animate({opacity: 0});
 		}
 	);
 });
