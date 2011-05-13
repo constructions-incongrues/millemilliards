@@ -1,5 +1,5 @@
 <?php
-$assetsVersion = 10;
+$assetsVersion = 11;
 
 // Client language detection
 // TODO : could be better !

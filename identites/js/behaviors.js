@@ -9,6 +9,7 @@ $(document).ready(function() {
 	});
 	$('#ln-middle').load(function() {
 		$('#middle').css('backgroundImage', 'url(' + $(this).attr('src') + ')');
+		$.data($('#middle')[0], 'previousBackgroundImage', $('#middle').css('backgroundImage'));
 		$('#middle').show('slide', {direction: 'right'});
 		if ($('#ln-top').attr('complete') && $('#ln-bottom').attr('complete')) {
 			$('body').css('backgroundImage', '');
@@ -68,10 +69,11 @@ $(document).ready(function() {
 	
 
 	$('#content').one('mouseenter', function() {
+		$.data($('#middle')[0], 'previousBackgroundImage', $('#middle').css('backgroundImage'));
 		$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
 	});
 	$('#content').mouseleave(function() {
-		$('#middle').css('backgroundImage', 'url('+$('#ln-middle').attr('src')+')');
+		$('#middle').css('backgroundImage', $.data($('#middle')[0], 'previousBackgroundImage'));
 		$('#content').one('mouseenter', function() {
 			$('#middle').css('backgroundImage', 'url(images/static/reload.gif)');
 		});
