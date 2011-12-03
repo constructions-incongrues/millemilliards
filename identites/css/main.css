@@ -17,7 +17,7 @@ ul#menu li a:hover {text-decoration:underline;}
 div#sharebox {background-color:#fff; border:solid 1px #000; width:90%; font-size: 0.7em; padding:0.3em; margin:auto; text-align:center;}
 div#sharebox p {font-size:3em;}
 
-#info 
+#info, #contribute
 {
 width:300px;
 float:right;
@@ -25,7 +25,7 @@ text-align: justify;
 padding: 1em;
 }
 
-#info h1, #info h2
+#info h1, #info h2, #contribute h1, #contribute h2
 {
 font-size:1.1em;
 color:#000;
@@ -52,7 +52,7 @@ font-size: 0.8em;
 	font-size: 1.3em;
 	color: black;	
 }
-#info-about .button a 
+#info-about .button a, #info-contribute .button a  
 {
 margin-top:-14px;
 color:#000;
@@ -63,7 +63,7 @@ border-radius:5px;
 }
 
 
-#info-about
+#info-about, #info-contribute
 {
 	padding: 2em;
 }
@@ -104,3 +104,7 @@ p.button {
 p.button a#close {
 	font-size: 0.7em;
 }
+
+div#info-contribute {background-image:url(../images/static/contribute.png);background-repeat:no-repeat;height:100%;text-align:center; padding-top:10em;}
+div#info-about {background-image:url(../images/static/apropos.png);background-repeat:no-repeat;height:100%;padding-top:12em;color:#fff;text-align:center;}
+div#info-about a {color:white;font-weight:bold;}

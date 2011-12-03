@@ -50,7 +50,7 @@ if (isset($_FILES['file'])) {
 	// Redirect user to uploaded parts 
 	$url = sprintf('index.php?part1=%s_part_1.png&part2=%s_part_2.png&part3=%s_part_3.png&created=%d', $imageName, $imageName, $imageName, $countIdentitiesCreated);
 	$feedback = array('class' => 'success', 'text' => sprintf('Great job ! Vous venez de créer <strong>%d</strong> nouvelles identités.', $countIdentitiesCreated));
-	header(sprintf('Refresh:5;url=%s', $url));
+	header(sprintf('Refresh:2;url=%s', $url));
 	
 	
 	} catch (Exception $e) {
@@ -73,19 +73,6 @@ if (isset($_FILES['file'])) {
 	
 	<body>
 	
-		<h2>Contraintes</h2>
-		<p>L'image doit être au format PNG et avoir pour dimensions 800x600 pixels.</p>
-
-		<h2>Modèle</h2>
-		<a href="images/static/anonymous.png" title="Télécharger le modèle"><img src="images/static/anonymous.png" width="400" height="300" /></a>
-		<p><a href="images/static/anonymous.png" title="Télécharger le modèle">Télécharger le modèle</a></p>
-
-		<h2>Soumettre une nouvelle identité</h2>
-		<form method="post" enctype="multipart/form-data">
-			<p><input type="file" name="file" size="30" /></p>
-			<p><input type="submit" name="upload" value="Ajouter" /></p>
-		</form>
-
 <?php if($feedback): ?>
 		<p class="<?php echo $feedback['class'] ?>"><strong><?php echo $feedback['text'] ?></strong></p>
 <?php endif; ?>

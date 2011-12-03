@@ -88,16 +88,24 @@ $(document).ready(function() {
 		$('#content').flip({direction: 'rl', color:'#fff', content: $('#info').html()});
 		$(this).parent('li').hide();
 		$(this).parent('li').siblings().hide('fade');
-		$('#menu a.about-back').parent('li').show();
+		$('#menu a.back').parent('li').show();
 	});
 	
-	$('#menu a.about-back').live('click', function(event) {
+	$('#menu a.contribute').click(function(event) {
+		event.preventDefault();
+		$('#content').flip({direction: 'rl', color:'#fff', content: $('#contribute').html()});
+		$(this).parent('li').hide();
+		$(this).parent('li').siblings().hide('fade');
+		$('#menu a.back').parent('li').show();
+	});
+	
+	$('#menu a.back').live('click', function(event) {
 		event.preventDefault();
 		$(this).parent('li').siblings().show('fade');
-		$('#menu a.about').parent('li').show();
 		$(this).parent('li').hide();
 		$('#content').revertFlip();
 	});
+
 	
 	$('#container').hover(
 		function() {

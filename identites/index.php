@@ -73,13 +73,13 @@ $strings = array(
 <p>Mille Milliards De Hasard est un générateur d'identités incongrues.</p>
 <p>Un projet inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.</p>",
 		'info-2'     => 
-sprintf('Le projet recense %s identités uniques à ce jour.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
+sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'partager',
 		'download'   => 'télécharger',
 		'contribute' => 'contribuer',
 		'about'      => 'à propos',
 		'footer'     => 
-sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
+sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.<br />
 			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
 ),
 	'en' => array(
@@ -147,6 +147,19 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		</div>
 	</div>
 
+	<div id="contribute" style="display:none;">
+		<div id="info-contribute">		
+			<h2>Soumettre une nouvelle identité</h2>
+			<p>L'image doit être au format PNG et avoirw<br /> pour dimensions 800x600 pixels.</p>
+			<p><a href="images/static/anonymous.png" title="Télécharger le modèle">Télécharger le modèle</a></p>
+			<form method="post" enctype="multipart/form-data" action="contribute.php">
+				<p><input type="file" name="file" size="30" /></p>
+				<p><input type="submit" name="upload" value="Ajouter" /></p>
+			</form>
+		</div>
+	</div>
+
+
 	<div id="sharebox" style="display:none;">
 	<p>&nbsp;</p>
 	<a href="#" class="close">close</a>
@@ -156,7 +169,7 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		
 		<ul id="menu">
 			<li><a class="about" href="" title="<?php echo $strings[$locale]['about'] ?>"><?php echo $strings[$locale]['about'] ?></a></li>
-			<li style="display:none;"><a class="about-back" href="index.php">Retour</a></li>
+			<li style="display:none;"><a class="back" href="index.php">Retour</a></li>
 			<li><a class="share" href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['share'] ?>"><?php echo $strings[$locale]['share'] ?></a></li>
 			<li><a class="download" href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['download'] ?>"><?php echo $strings[$locale]['download'] ?></a></li>
 			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
