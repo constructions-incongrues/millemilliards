@@ -84,7 +84,11 @@ sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', 
 		'download'   => 'télécharger',
 		'contribute' => 'contribuer',
 		'about'      => 'à propos',
-		'footer'     => sprintf('<p>Ailleurs : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
+		'footer'     => sprintf('<p>Ailleurs : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot),
+		'contribute.submit_title' => 'Soumettre une nouvelle identité',
+		'contribute.image_constraints' => "L'image doit être au format PNG et avoir<br /> pour dimensions 800x600 pixels.",
+		'contribute.download' => 'Télécharger le modèle',
+		'contribute.submit' => 'Envoyer'
 ),
 	'en' => array(
 		'info-1'     => "
@@ -96,7 +100,12 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 		'download'   => 'download',
 		'contribute' => 'contribute',
 		'about'      => 'about',
-		'footer'     => sprintf('<p>Elsewhere : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
+		'footer'     => sprintf('<p>Elsewhere : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot),
+		'contribute.submit_title' => 'Submit a new identity',
+		'contribute.image_constraints' => "Image must be in PNG format, 800x600 pixels.",
+		'contribute.download' => 'Download layer',
+		'contribute.submit' => 'Send'
+
 ),
 );
 ?>
@@ -121,10 +130,11 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 		<link type="application/rss+xml" title="Identités | Mille Milliards" rel="alternate" href="http://feeds.feedburner.com/mille-milliards-identites" /> 
 	
 		<!-- Opengraph -->
+		<meta property="og:description" content="Mille Milliards De Hasard est un générateur d'identités incongrues. Un projet ouvert et collaboratif inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet." />
 <?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
 		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
 <?php else: ?>
-		<meta property="og:image" content="<?php echo sprintf('%s/images/static/anonymous.png', $urlRoot) ?>" />
+		<meta property="og:image" content="<?php echo sprintf('%s/images/static/cidrolin.jpg', $urlRoot) ?>" />
 <?php endif;  ?>
 		
 		<script type="text/javascript">
@@ -154,12 +164,12 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 
 	<div id="contribute" style="display:none;">
 		<div id="info-contribute">		
-			<h2>Soumettre une nouvelle identité</h2>
-			<p>L'image doit être au format PNG et avoir<br /> pour dimensions 800x600 pixels.</p>
-			<p><a href="images/static/anonymous.png" title="Télécharger le modèle">Télécharger le modèle</a></p>
+			<h2><?php echo $strings[$locale]['contribute.submit_title'] ?></h2>
+			<p><?php echo $strings[$locale]['contribute.image_constraints'] ?></p>
+			<p><a href="images/static/anonymous.png" title="<?php echo $strings[$locale]['contribute.download'] ?>"><?php echo $strings[$locale]['contribute.download'] ?></a></p>
 			<form method="post" enctype="multipart/form-data" action="contribute.php">
 				<p><input type="file" name="file" size="30" /></p>
-				<p><input type="submit" name="upload" value="Ajouter" /></p>
+				<p><input type="submit" name="upload" value="<?php echo $strings[$locale]['contribute.submit'] ?>" /></p>
 			</form>
 		</div>
 	</div>
@@ -225,14 +235,19 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 		</div>
 	</div>
 	
-		<script type="text/javascript" src="http://www.google-analytics.com/urchin.js"></script>
-		<script type="text/javascript"> 
-            // <![CDATA[
-            _uacct="UA-673133-2";
-            urchinTracker();
-            // ]]>
-		</script>
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27467726-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 	</body>
 
 </html>
