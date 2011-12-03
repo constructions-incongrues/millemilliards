@@ -70,8 +70,8 @@ $countIdentities = pow(count(glob(sprintf('%s/images/full/*.png', dirname(__FILE
 $strings = array(
 	'fr' => array(
 		'info-1'     => "
-<p>Mille Milliards De Hasard est un générateur d'identités incongrues.</p>
-<p>Un projet inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.</p>",
+<p>Mille Milliards De Hasard est un générateur d'identités incongrues.
+Un projet inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.</p>",
 		'info-2'     => 
 sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'partager',
@@ -80,7 +80,7 @@ sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', 
 		'about'      => 'à propos',
 		'footer'     => 
 sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.<br />
-			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
+			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.<p>Ailleurs : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
 ),
 	'en' => array(
 		'info-1'     => "

@@ -6,12 +6,12 @@ if (isset($_FILES['file'])) {
 	// Sanity checks
 	// -- File type
 	if ($_FILES['file']['type'] != 'image/png') {
-		throw new InvalidArgumentException('Image must be of type "image/png"', 400);
+		throw new InvalidArgumentException('Error : Image must be of type "image/png"', 400);
 	}
 	// -- File size
 	$imageSize = getimagesize($_FILES['file']['tmp_name']);
 	if ($imageSize[0] !== 800 || $imageSize[1] !== 600) {
-		throw new InvalidArgumentException(sprintf('Image dimensions must be 800x600 (uploaded image dimensions : %s)', $imageSize[3]), 400);
+		throw new InvalidArgumentException(sprintf('Error : Image dimensions must be 800x600 (uploaded image dimensions : %s)', $imageSize[3]), 400);
 	}
 	
 	// Build image name
@@ -49,12 +49,13 @@ if (isset($_FILES['file'])) {
 	
 	// Redirect user to uploaded parts 
 	$url = sprintf('index.php?part1=%s_part_1.png&part2=%s_part_2.png&part3=%s_part_3.png&created=%d', $imageName, $imageName, $imageName, $countIdentitiesCreated);
-	$feedback = array('class' => 'success', 'text' => sprintf('Great job ! Vous venez de créer <strong>%d</strong> nouvelles identités.', $countIdentitiesCreated));
+	$feedback = array('class' => 'success', 'text' => sprintf('Vous venez de créer <strong>%d</strong> nouvelles identités.', $countIdentitiesCreated));
 	header(sprintf('Refresh:2;url=%s', $url));
 	
 	
 	} catch (Exception $e) {
 		$feedback = array('class' => 'error', 'text' => $e->getMessage());
+		header(sprintf('Refresh:2;url=%s', 'index.php'));
 	}
 }
 ?>
@@ -66,8 +67,8 @@ if (isset($_FILES['file'])) {
 		<title>Mille Milliards de Hasard - Contribution</title>
 		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" />
 		<style type="text/css">
-			p.success {color: green;}
-			p.error {color: red;}
+			body {margin:auto;text-align:center;font-size:4em;}
+			p.success, p.error {color: white;background-color:black;}
 		</style>
 	</head>
 	
