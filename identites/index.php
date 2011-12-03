@@ -77,7 +77,7 @@ $strings = array(
 	'fr' => array(
 		'info-1'     => "
 <p>Mille Milliards De Hasard est un générateur d'identités incongrues.
-Un projet inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.</p>",
+Un projet <strong>ouvert et collaboratif</strong> inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet.</p>",
 		'info-2'     => 
 sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'partager',
@@ -89,7 +89,7 @@ sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', 
 	'en' => array(
 		'info-1'     => "
 <p>Mille Milliards De Hasard (Trillion of Random) is a generator of incongrous identities.
-A project inspired by Raymond Queneau, children's books, and the wonder of hazardous magic given by the internet.</p>",
+A <strong>collaborative and open</strong> project inspired by Raymond Queneau, children's books, and the wonder of hazardous magic given by the internet.</p>",
 		'info-2'     => 
 sprintf('This project gathers <strong>%d</strong> distinct identities.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'share',
