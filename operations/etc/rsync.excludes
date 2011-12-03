@@ -1,5 +1,7 @@
 identites/images/full/*.png
 identites/images/parts/*/*.png
+identites/latestUpdate
+identites/latestIdentity
 operations
 .buildpath
 .gitignore
