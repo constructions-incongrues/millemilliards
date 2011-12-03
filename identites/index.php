@@ -168,11 +168,16 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	<div id="container">
 		
 		<ul id="menu">
-			<li><a class="about" href="" title="<?php echo $strings[$locale]['about'] ?>"><?php echo $strings[$locale]['about'] ?></a></li>
 			<li style="display:none;"><a class="back" href="index.php">Retour</a></li>
+			<li><a class="about" href="" title="<?php echo $strings[$locale]['about'] ?>"><?php echo $strings[$locale]['about'] ?></a></li>
+			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
+<?php if ($images['part1']): ?>
 			<li><a class="share" href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['share'] ?>"><?php echo $strings[$locale]['share'] ?></a></li>
 			<li><a class="download" href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['download'] ?>"><?php echo $strings[$locale]['download'] ?></a></li>
-			<li><a class="contribute" href="contribute.php" title="<?php echo $strings[$locale]['contribute'] ?>"><?php echo $strings[$locale]['contribute'] ?></a></li>
+<?php else: ?>
+			<li style="display:none;"><a class="share" href="<?php echo sprintf('%s/?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['share'] ?>"><?php echo $strings[$locale]['share'] ?></a></li>
+			<li style="display:none;"><a class="download" href="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" title="<?php echo $strings[$locale]['download'] ?>"><?php echo $strings[$locale]['download'] ?></a></li>
+<?php endif; ?>
 		</ul>
 		
 		<div id="content" class="identity">
