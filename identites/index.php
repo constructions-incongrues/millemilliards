@@ -150,7 +150,7 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 	<div id="contribute" style="display:none;">
 		<div id="info-contribute">		
 			<h2>Soumettre une nouvelle identité</h2>
-			<p>L'image doit être au format PNG et avoirw<br /> pour dimensions 800x600 pixels.</p>
+			<p>L'image doit être au format PNG et avoir<br /> pour dimensions 800x600 pixels.</p>
 			<p><a href="images/static/anonymous.png" title="Télécharger le modèle">Télécharger le modèle</a></p>
 			<form method="post" enctype="multipart/form-data" action="contribute.php">
 				<p><input type="file" name="file" size="30" /></p>
