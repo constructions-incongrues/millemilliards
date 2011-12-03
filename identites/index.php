@@ -130,7 +130,7 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 		<link type="application/rss+xml" title="Identités | Mille Milliards" rel="alternate" href="http://feeds.feedburner.com/mille-milliards-identites" /> 
 	
 		<!-- Opengraph -->
-		<meta property="og:description" content="Mille Milliards De Hasard est un générateur d'identités incongrues. Un projet ouvert et collaboratif inspiré par Raymond Queneau, les livres pour enfants, et l'émerveillement que procure la magie aléatoire de l'Internet." />
+		<meta property="og:description" content="<?php echo strip_tags($strings[$locale]['info-1']) ?>" />
 <?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
 		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
 <?php else: ?>
