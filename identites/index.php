@@ -112,7 +112,8 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 		
 		<link rel="stylesheet" type="text/css" href="css/main.css?v=<?php echo $assetsVersion ?>" />
 		<link href='http://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" /> 
+		<link rel="shortcut icon" type="image/png" href="images/static/favicon.png" />
+		<link type="application/rss+xml" title="Identités | Mille Milliards" rel="alternate" href="http://feeds.feedburner.com/mille-milliards-identites" /> 
 	
 		<!-- Opengraph -->
 <?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
