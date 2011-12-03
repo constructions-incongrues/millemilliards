@@ -59,6 +59,12 @@ $images = array(
 	'part2' => filter_input(INPUT_GET, 'part2'),
 	'part3' => filter_input(INPUT_GET, 'part3')
 );
+$identityId = null;
+if ($images['part1']) {
+	$matches = array();
+	preg_match('/millemilliard_(.+)_part_1.png/', $images['part1'], $matches);
+	$identityId = $matches[1];
+}
 
 // Configure
 $urlRoot = sprintf('http://%s%s', $_SERVER['SERVER_NAME'], dirname($_SERVER['PHP_SELF']));
@@ -78,23 +84,19 @@ sprintf('Le projet recense <strong>%s identités uniques</strong> à ce jour.', 
 		'download'   => 'télécharger',
 		'contribute' => 'contribuer',
 		'about'      => 'à propos',
-		'footer'     => 
-sprintf('<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.<br />
-			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.<p>Ailleurs : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
+		'footer'     => sprintf('<p>Ailleurs : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
 ),
 	'en' => array(
 		'info-1'     => "
-<p>Mille Milliards De Hasard (Trillion of Random) is a generator of incongrous identities.</p>
-<p>A project inspired by Raymond Queneau, children's books, and the wonder of hazardous magic given by the internet.</p>",
+<p>Mille Milliards De Hasard (Trillion of Random) is a generator of incongrous identities.
+A project inspired by Raymond Queneau, children's books, and the wonder of hazardous magic given by the internet.</p>",
 		'info-2'     => 
-sprintf('This project gathers %d distinct identities.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
+sprintf('This project gathers <strong>%d</strong> distinct identities.', number_format($countIdentities, 0, $localeInfo['decimal_point'], $localeInfo['thousands_sep'])),
 		'share'      => 'share',
 		'download'   => 'download',
 		'contribute' => 'contribute',
 		'about'      => 'about',
-		'footer'     => 
-sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> and <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
-			Source code is <a href="https://github.com/contructions-incongrues/millemilliards">distributed</a> under a <a href="" title="">AGPL3</a> licence. Project is hosted by <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.', $urlRoot)
+		'footer'     => sprintf('<p>Elsewhere : <a href="feeds.feedburner.com/mille-milliards-identites">RSS</a> / <a href="https://www.facebook.com/pages/Mille-Milliards-de-Hasards/269861196377758">Facebook</a></p>', $urlRoot)
 ),
 );
 ?>
@@ -102,8 +104,11 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 <html xmlns:og="http://ogp.me/ns#">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-		<title>Mille Milliards de Hasard</title>
+<?php if ($identityId): ?>
+		<title><?php echo $identityId ?> | Identités | Mille Milliards</title>
+<?php else: ?>
+		<title>Identités | Mille Milliards</title>
+<?php endif; ?>
 		
 		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
@@ -213,6 +218,10 @@ sprintf('<a href="%s">This project</a> is maintained by <a href="http://cobrafou
 			</div>
 <?php endif; ?>
 
+		</div>
+		<div id="footer">
+			<a href="%s">Mille Milliards de Hasard</a> est développé conjointement par <a href="http://cobrafoutre.tumblr.com" title="Meet the Cobra">Cobra Foutre</a> et <a href="http://www.constructions-incongrues.net" title="Les Constructions Incongrues">Constructions Incongrues</a>.
+			Le code source est <a href="https://github.com/contructions-incongrues/millemilliards">diffusé</a> sous license <a href="" title="">AGPL3</a>. Le projet est hébergé par <a href="http://www.pastis-hosting.net" title="L\'hébergeur dopé au Pastis">Pastis Hosting</a>.		
 		</div>
 	</div>
 	

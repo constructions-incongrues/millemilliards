@@ -65,7 +65,7 @@ border-radius:5px;
 
 #info-about, #info-contribute
 {
-	padding: 2em;
+	padding: 2em
 }
 
 #bubble
@@ -81,7 +81,7 @@ z-index: 5;
 	font-size:0.6em; 
 	color:#bbb; 
 	text-align:center; 
-	margin-top: 0em;
+	margin-top: 0.8em;
 }
 
 #footer a {
@@ -106,5 +106,5 @@ p.button a#close {
 }
 
 div#info-contribute {background-image:url(../images/static/contribute.png);background-repeat:no-repeat;height:100%;text-align:center; padding-top:10em;}
-div#info-about {background-image:url(../images/static/apropos.png);background-repeat:no-repeat;height:100%;padding-top:12em;color:#fff;text-align:center;}
+div#info-about {background-image:url(../images/static/apropos.png);background-repeat:no-repeat;height:100%;padding-top:14em;color:#fff;text-align:center;}
 div#info-about a {color:white;font-weight:bold;}

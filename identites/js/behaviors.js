@@ -43,6 +43,9 @@ $(document).ready(function() {
 				// Update download link
 				$('a.download').attr('href', 'download.php'+'?part1='+data.top+'&part2='+data.middle+'&part3='+data.bottom);
 				$('a.download').parent('li').show('fade');
+				
+				// Update page title
+				document.title = data.top.match(/millemilliard_(.+)_part_1.png/)[1] + ' | Identités | Mille Milliards';
 			});
 		});
 	});
