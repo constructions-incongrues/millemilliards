@@ -134,7 +134,7 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 <?php if ($images['part1'] && $images['part2'] && $images['part3']): ?>
 		<meta property="og:image" content="<?php echo sprintf('%s/download.php?part1=%s&part2=%s&part3=%s', $urlRoot, $images['part1'], $images['part2'], $images['part3']) ?>" />
 <?php else: ?>
-		<meta property="og:image" content="<?php echo sprintf('%s/images/static/cidrolin.jpg', $urlRoot) ?>" />
+		<meta property="og:image" content="<?php echo sprintf('%s/images/static/major.png', $urlRoot) ?>" />
 <?php endif;  ?>
 		
 		<script type="text/javascript">
@@ -201,7 +201,7 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 				<img class="icare" src="images/static/layer-top.png" />
 			</div>
 <?php else: ?>
-			<div id="top" class="part" style="background-image:url(images/static/cidrolin_top.png);">
+			<div id="top" class="part" style="background-image:url(images/static/major_top.png);">
 				<img class="icare" src="images/static/layer-top.png" />
 			</div>
 <?php endif; ?>
@@ -212,7 +212,7 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 				<img class="icare" src="images/static/layer-middle.png" />
 			</div>
 <?php else: ?>
-			<div id="middle" class="part" style="background-image:url(images/static/cidrolin_middle.png);">
+			<div id="middle" class="part" style="background-image:url(images/static/major_middle.png);">
 				<img class="icare" src="images/static/layer-middle.png" />
 			</div>
 <?php endif; ?>
@@ -223,7 +223,7 @@ sprintf('This project gathers <strong>%d</strong> distinct identities.', number_
 				<img class="icare" src="images/static/layer-bottom.png" />
 			</div>
 <?php else: ?>
-			<div id="bottom" style="background-image:url(images/static/cidrolin_bottom.png);">
+			<div id="bottom" style="background-image:url(images/static/major_bottom.png);">
 				<img class="icare" src="images/static/layer-bottom.png" />
 			</div>
 <?php endif; ?>
